@@ -1,10 +1,15 @@
 package duke;
 
-public class Duke {
+import javafx.scene.control.Label;
 
+public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
+
+    public Duke() {
+
+    }
 
     public Duke(String filePath) {
         this.storage = new Storage(filePath);
@@ -20,5 +25,9 @@ public class Duke {
         Ui.printWelcomeMessage();
 
         Parser.parse(storage, tasks, ui);
+    }
+
+    public String getResponse(String input) {
+        return "Duke heard: " + input;
     }
 }
