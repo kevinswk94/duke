@@ -2,13 +2,16 @@ package duke;
 
 import javafx.scene.control.Label;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
 
     public Duke() {
-
+        this("data/duke.txt");
     }
 
     public Duke(String filePath) {
@@ -28,6 +31,21 @@ public class Duke {
     }
 
     public String getResponse(String input) {
-        return "Duke heard: " + input;
+        String response;
+        // Change stdout for duke
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        try {
+            Parser.parse(storage, tasks, ui, input);
+        } catch (DukeException dukeException) {
+            // Display error message
+            System.out.print(dukeException.getMessage());
+        }
+        response = output.toString();
+        // Remove all horizontal divider present
+        response = response.trim();
+        // Reset stdout for duke
+        System.setOut(System.out);
+        return response;
     }
 }
