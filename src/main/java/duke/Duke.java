@@ -1,7 +1,5 @@
 package duke;
 
-import javafx.scene.control.Label;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
