@@ -4,6 +4,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class Parser {
+
+    /**
+     * Parses user input to determine what action to take.
+     * @param storage A Storage instance managing a save file
+     * @param tasks A TaskList instance managing tasks
+     * @param ui A Ui instance managing displaying of output
+     */
     public static void parse(Storage storage, TaskList tasks, Ui ui) {
         boolean isRunning = true;
 
@@ -131,6 +138,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses user input to determine what action to take.
+     * @param storage A Storage instance managing a save file
+     * @param tasks A TaskList instance managing tasks
+     * @param ui A Ui instance managing displaying of output
+     * @param input An input string
+     */
     public static String parse(Storage storage, TaskList tasks, Ui ui, String input) throws DukeException {
         String result = "";
         try {
