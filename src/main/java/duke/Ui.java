@@ -10,9 +10,9 @@ public class Ui {
     }
 
     public static void printMessage(String msg) {
-        System.out.println("\t____________________________________________________________");
+        //System.out.println("\t____________________________________________________________");
         System.out.println("\t" + msg);
-        System.out.println("\t____________________________________________________________");
+        //System.out.println("\t____________________________________________________________");
         System.out.println();
     }
 

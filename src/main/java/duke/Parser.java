@@ -1,5 +1,7 @@
 package duke;
 
+import javafx.application.Platform;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -141,6 +143,7 @@ public class Parser {
             switch (cmd) {
             case BYE:
                 Ui.printMessage("Bye! Hope you visit again soon!");
+                Platform.exit();
                 break;
             case FIND:
                 if (inputSplit.length < 2) {
