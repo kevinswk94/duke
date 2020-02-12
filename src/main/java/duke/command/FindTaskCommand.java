@@ -6,10 +6,10 @@ import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
-public class FindCommand extends Command {
+public class FindTaskCommand extends Command {
     private String searchTerm;
 
-    public FindCommand(String[] cmdArgs) throws DukeException {
+    public FindTaskCommand(String[] cmdArgs) throws DukeException {
         if (!hasValidNumOfArgs(cmdArgs.length)) {
             throw new InsufficientArgumentsException("☹ OOPS!!! FIND command expects a search term!");
         } else {

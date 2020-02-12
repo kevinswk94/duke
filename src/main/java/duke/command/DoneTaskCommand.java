@@ -7,31 +7,30 @@ import duke.task.Task;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
-public class DeleteCommand extends Command {
+public class DoneTaskCommand extends Command {
     private int index;
 
-    public DeleteCommand(String[] cmdArgs) throws DukeException {
-        // TODO: add varargs (etc: delete 4 2 1)
+    public DoneTaskCommand(String[] cmdArgs) throws DukeException {
+        // TODO: add varargs (etc: done 4 2 1)
         if (!hasValidNumOfArgs(cmdArgs.length)) {
-            throw new InsufficientArgumentsException("☹ OOPS!!! DELETE command expects 1 integer argument!");
+            throw new InsufficientArgumentsException("☹ OOPS!!! DONE command expects 1 integer argument!");
         } else {
             try {
                 this.index = Integer.parseInt(cmdArgs[1]) - 1;
             } catch (NumberFormatException ex) {
-                throw new DukeException("☹ OOPS!!! Please enter a Integer value!");
+                throw new DukeException("☹ OOPS!!! DONE command expects 1 integer argument!");
             }
         }
     }
+
 
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         Task task = tasks.getTask(this.index);
         assert task != null : "Task should not be null.";
-        tasks.deleteTask(this.index);
+        tasks.markTaskAsDone(this.index);
 
-        Ui.printMessage("Noted! I've removed this task:\n\t\t" + task + "\n\tNow you have " + tasks.getNumberOfTasks()
-                        + " tasks in the list.");
-
+        Ui.printMessage("Nice! I've marked this task as done:\n\t" + task);
         storage.storeTasks(tasks.getTasks());
     }
 

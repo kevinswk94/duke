@@ -22,16 +22,16 @@ public class Parser {
             cmd = new ByeCommand();
             break;
         case LIST:
-            cmd = new ListCommand();
+            cmd = new ListTaskCommand();
             break;
         case DONE:
-            cmd = new DoneCommand(cmdArgs);
+            cmd = new DoneTaskCommand(cmdArgs);
             break;
         case FIND:
-            cmd = new FindCommand(cmdArgs);
+            cmd = new FindTaskCommand(cmdArgs);
             break;
         case DELETE:
-            cmd = new DeleteCommand(cmdArgs);
+            cmd = new DeleteTaskCommand(cmdArgs);
             break;
         case DEADLINE:
             cmd = new DeadlineCommand(cmdArgs);
